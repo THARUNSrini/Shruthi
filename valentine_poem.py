@@ -44,12 +44,12 @@ STANZAS = [
         "Like kolam drawn at dawn with patience and with care,\n"
         "You painted love in corners I forgot were there."
     ),
-    # Stanza 3 — Shared moments & family warmth
+    # Stanza 3 — Imaginary future moments together
     (
-        "We sat on that old terrace watching crows fly home,\n"
-        "Sharing filter coffee, knowing we would never be alone.\n"
-        "Your amma's laughter echoing through the evening breeze,\n"
-        "These simple little moments put my restless heart at ease."
+        "I dream of sitting with you on a terrace watching stars,\n"
+        "Sharing filter coffee, forgetting all our scars.\n"
+        "One day I'll hear your laughter in the evening breeze,\n"
+        "And all these dreams I carry now will finally find their ease."
     ),
     # Stanza 4 — Gratitude & support
     (

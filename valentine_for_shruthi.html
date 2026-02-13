@@ -1,955 +1,1610 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>My Eternal Love for You, Shruthi – Happy Valentine's Day from THARUN</title>
-<meta name="description" content="A heartfelt Valentine's Day poem from Tharun to Shruthi, adorned with South Indian imagery and love.">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Eternal Love for You, Shruthi – Happy Valentine's Day from THARUN</title>
+  <meta name="description" content="A heartfelt Valentine's Day poem from Tharun to Shruthi — a cinematic love letter.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Outfit:wght@300;400;600&display=swap"
+    rel="stylesheet">
+  <style>
+    /* ═══════ RESET ═══════ */
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box
+    }
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Great+Vibes&display=swap" rel="stylesheet">
+    html {
+      scroll-behavior: smooth
+    }
 
-<style>
-/* ══════════════════════════════════════════════
-   ROOT & RESET
-   ══════════════════════════════════════════════ */
-:root {
-  --saffron: #E8913A;
-  --deep-saffron: #C2621A;
-  --rose: #D14D72;
-  --deep-rose: #A3284A;
-  --lotus-pink: #F2A6C0;
-  --gold: #D4A843;
-  --dark-text: #3C1518;
-  --cream: #FFF8F0;
-}
-*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-html { overflow-x: hidden; }
-body {
-  min-height: 100vh;
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  color: var(--dark-text);
-  overflow-x: hidden;
-  cursor: default;
-  background: #0a0008;
-}
+    body {
+      overflow-x: hidden;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      background: #050008;
+      color: #ffeef4;
+      cursor: default
+    }
 
-/* ══════════════════════════════════════════════
-   PHASE 1 — FULL-SCREEN INTRO OVERLAY
-   ══════════════════════════════════════════════ */
-#intro {
-  position: fixed; inset: 0; z-index: 9999;
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-  background: radial-gradient(ellipse at center, #1a0011 0%, #0a0008 70%);
-  transition: opacity 1.5s ease, transform 1.5s ease;
-}
-#intro.hide {
-  opacity: 0;
-  transform: scale(1.15);
-  pointer-events: none;
-}
+    /* ═══════ LOADING SCREEN ═══════ */
+    #loader {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      background: #050008;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 1s ease
+    }
 
-/* Pulsing mega heart in intro */
-.mega-heart {
-  font-size: 0;
-  opacity: 0;
-  animation: megaHeartEntry 2s ease-out 0.5s forwards;
-  filter: drop-shadow(0 0 40px rgba(209,77,114,0.6));
-  position: relative;
-  z-index: 2;
-}
-@keyframes megaHeartEntry {
-  0%   { font-size: 0; opacity: 0; transform: scale(0) rotate(-20deg); }
-  50%  { opacity: 1; }
-  80%  { font-size: 120px; transform: scale(1.15) rotate(5deg); }
-  100% { font-size: 100px; opacity: 1; transform: scale(1) rotate(0deg); }
-}
-.mega-heart.pulse {
-  animation: heartPulseGlow 1.2s ease-in-out infinite;
-}
-@keyframes heartPulseGlow {
-  0%, 100% { transform: scale(1); filter: drop-shadow(0 0 40px rgba(209,77,114,0.6)); }
-  25%  { transform: scale(1.18); filter: drop-shadow(0 0 80px rgba(209,77,114,0.9)); }
-  45%  { transform: scale(1); }
-  65%  { transform: scale(1.12); filter: drop-shadow(0 0 60px rgba(209,77,114,0.8)); }
-}
+    #loader.done {
+      opacity: 0;
+      pointer-events: none
+    }
 
-/* Shimmering ring behind the heart */
-.heart-ring {
-  position: absolute;
-  width: 220px; height: 220px;
-  border-radius: 50%;
-  border: 2px solid rgba(212,168,67,0.0);
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%) scale(0);
-  animation: ringExpand 2s ease-out 1.8s forwards;
-  z-index: 1;
-}
-.heart-ring:nth-child(2) { animation-delay: 2.1s; }
-.heart-ring:nth-child(3) { animation-delay: 2.4s; width: 300px; height: 300px; }
-@keyframes ringExpand {
-  0%   { transform: translate(-50%,-50%) scale(0); border-color: rgba(212,168,67,0.7); opacity:1; }
-  100% { transform: translate(-50%,-50%) scale(2.5); border-color: rgba(212,168,67,0); opacity:0; }
-}
+    .loader-ring {
+      width: 60px;
+      height: 60px;
+      border: 3px solid rgba(209, 77, 114, 0.15);
+      border-top: 3px solid #D14D72;
+      border-radius: 50%;
+      animation: spin 1s linear infinite
+    }
 
-/* Name reveal — letter by letter */
-.intro-name {
-  font-family: 'Great Vibes', cursive;
-  font-size: clamp(2.5rem, 7vw, 4.5rem);
-  color: transparent;
-  margin-top: 30px;
-  position: relative;
-  z-index: 2;
-}
-.intro-name span {
-  display: inline-block;
-  opacity: 0;
-  color: var(--gold);
-  text-shadow: 0 0 20px rgba(212,168,67,0.5), 0 0 60px rgba(212,168,67,0.2);
-  transform: translateY(30px) scale(0.5) rotate(-10deg);
-  animation: letterReveal 0.6s ease-out forwards;
-}
-@keyframes letterReveal {
-  0%   { opacity:0; transform: translateY(30px) scale(0.5) rotate(-10deg); filter: blur(8px); }
-  60%  { transform: translateY(-5px) scale(1.1) rotate(2deg); }
-  100% { opacity:1; transform: translateY(0) scale(1) rotate(0deg); filter: blur(0); }
-}
+    @keyframes spin {
+      to {
+        transform: rotate(360deg)
+      }
+    }
 
-.intro-subtitle {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(0.9rem, 2.5vw, 1.2rem);
-  color: var(--lotus-pink);
-  margin-top: 12px;
-  opacity: 0;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  z-index: 2;
-  position: relative;
-}
+    .loader-text {
+      margin-top: 20px;
+      font-family: 'Outfit', sans-serif;
+      font-size: .85rem;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      color: rgba(212, 168, 67, 0.6);
+      animation: loadPulse 1.5s ease-in-out infinite
+    }
 
-/* Intro particle canvas */
-#introParticles {
-  position: absolute; inset: 0;
-  z-index: 0;
-  pointer-events: none;
-}
+    @keyframes loadPulse {
 
-/* Click/tap prompt */
-.tap-prompt {
-  position: absolute;
-  bottom: 60px;
-  font-family: 'Caveat', cursive;
-  font-size: 1.3rem;
-  color: rgba(242,166,192,0.7);
-  opacity: 0;
-  z-index: 2;
-  animation: tapBlink 2s ease-in-out infinite;
-}
-@keyframes tapBlink {
-  0%, 100% { opacity: 0; }
-  50% { opacity: 0.8; }
-}
+      0%,
+      100% {
+        opacity: .4
+      }
 
-/* ══════════════════════════════════════════════
-   PHASE 2 — MAIN PAGE (poem)
-   ══════════════════════════════════════════════ */
-#mainPage {
-  display: none;
-  min-height: 100vh;
-  position: relative;
-  background: linear-gradient(160deg, #FFF5EB 0%, #FFE4D6 20%, #FDDDE6 40%, #FCEAE8 60%, #FFF0DB 80%, #F2FFE5 100%);
-  background-attachment: fixed;
-}
-#mainPage.show {
-  display: block;
-  animation: pageReveal 2s ease-out forwards;
-}
-@keyframes pageReveal {
-  0%   { opacity: 0; }
-  100% { opacity: 1; }
-}
+      50% {
+        opacity: 1
+      }
+    }
 
-/* Moving aurora overlay */
-.aurora {
-  position: fixed; inset: 0;
-  pointer-events: none; z-index: 0;
-  background:
-    radial-gradient(ellipse at 20% 20%, rgba(232,145,58,0.08) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 80%, rgba(209,77,114,0.08) 0%, transparent 50%),
-    radial-gradient(ellipse at 50% 50%, rgba(59,122,59,0.05) 0%, transparent 60%);
-  animation: auroraShift 12s ease-in-out infinite alternate;
-}
-@keyframes auroraShift {
-  0%   { transform: translate(0, 0) scale(1); }
-  50%  { transform: translate(-30px, 20px) scale(1.05); }
-  100% { transform: translate(30px, -20px) scale(1); }
-}
+    /* ═══════ STARFIELD CANVAS ═══════ */
+    #starfield {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none
+    }
 
-/* Sparkle trail canvas */
-#sparkleCanvas {
-  position: fixed; inset: 0;
-  pointer-events: none;
-  z-index: 9998;
-}
+    /* ═══════ PHASE 1: CINEMATIC INTRO ═══════ */
+    #cinematic {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      transition: opacity 1.8s cubic-bezier(.4, 0, .2, 1), transform 1.8s cubic-bezier(.4, 0, .2, 1)
+    }
 
-/* Floating elements container */
-.ambient-bg {
-  position: fixed; inset: 0;
-  pointer-events: none; z-index: 1;
-  overflow: hidden;
-}
+    #cinematic.exit {
+      opacity: 0;
+      transform: scale(1.3);
+      pointer-events: none
+    }
 
-/* Hearts float up */
-.float-heart {
-  position: absolute; bottom: -60px;
-  opacity: 0;
-  animation: floatUpSway linear infinite;
-}
-@keyframes floatUpSway {
-  0%   { transform: translateY(0) translateX(0) rotate(0deg) scale(0.7); opacity:0; }
-  8%   { opacity: 0.65; }
-  25%  { transform: translateY(-28vh) translateX(25px) rotate(45deg); }
-  50%  { transform: translateY(-55vh) translateX(-20px) rotate(120deg) scale(1); }
-  75%  { transform: translateY(-82vh) translateX(15px) rotate(230deg); }
-  92%  { opacity: 0.3; }
-  100% { transform: translateY(-115vh) translateX(-10px) rotate(360deg) scale(1.1); opacity:0; }
-}
+    .cin-overlay {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 50%, rgba(30, 0, 20, 0.3) 0%, rgba(5, 0, 8, 0.95) 70%);
+      z-index: 1
+    }
 
-/* Petals — organic CSS shapes */
-.petal {
-  position: absolute; bottom: -50px;
-  width: 16px; height: 22px;
-  border-radius: 50% 0 50% 50%;
-  background: linear-gradient(135deg, rgba(255,182,193,0.85), rgba(255,105,135,0.6));
-  opacity: 0;
-  animation: petalDrift linear infinite;
-}
-@keyframes petalDrift {
-  0%   { transform: translateY(0) rotate(0deg) translateX(0) scale(0.8); opacity:0; }
-  10%  { opacity: 0.6; }
-  30%  { transform: translateY(-35vh) rotate(100deg) translateX(50px); }
-  60%  { transform: translateY(-65vh) rotate(220deg) translateX(-40px) scale(1.1); }
-  90%  { opacity: 0.2; }
-  100% { transform: translateY(-115vh) rotate(400deg) translateX(20px); opacity:0; }
-}
+    #nebula {
+      position: absolute;
+      inset: 0;
+      z-index: 0
+    }
 
-/* Sparkle dots (CSS) */
-.sparkle-dot {
-  position: absolute;
-  width: 4px; height: 4px;
-  background: var(--gold);
-  border-radius: 50%;
-  opacity: 0;
-  animation: sparklePop ease-in-out infinite;
-  box-shadow: 0 0 6px var(--gold), 0 0 12px rgba(212,168,67,0.3);
-}
-@keyframes sparklePop {
-  0%, 100% { opacity: 0; transform: scale(0); }
-  50% { opacity: 1; transform: scale(1); }
-}
+    /* Letterbox bars */
+    .letterbox {
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 0;
+      background: #000;
+      z-index: 10;
+      transition: height 1.5s cubic-bezier(.4, 0, .2, 1)
+    }
 
-/* Lotus corners */
-.lotus { position: fixed; font-size: 2.8rem; opacity: 0.08; pointer-events: none; z-index: 0; }
-.lotus-tl { top: 20px; left: 20px; animation: lotusRotate 20s linear infinite; }
-.lotus-tr { top: 20px; right: 20px; animation: lotusRotate 25s linear infinite reverse; }
-.lotus-bl { bottom: 20px; left: 20px; animation: lotusRotate 22s linear infinite; }
-.lotus-br { bottom: 20px; right: 20px; animation: lotusRotate 18s linear infinite reverse; }
-@keyframes lotusRotate { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    .letterbox-top {
+      top: 0
+    }
 
-/* ══════════════════════════════════════════════
-   POEM CONTAINER
-   ══════════════════════════════════════════════ */
-.container {
-  position: relative; z-index: 2;
-  max-width: 740px; width: 92%;
-  margin: 0 auto;
-  padding: 50px 20px 80px;
-}
+    .letterbox-bot {
+      bottom: 0
+    }
 
-/* 3D card envelope */
-.envelope {
-  background: rgba(255,255,255,0.5);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 1.5px solid rgba(212,168,67,0.3);
-  border-radius: 28px;
-  padding: 55px 42px;
-  box-shadow:
-    0 12px 50px rgba(194,98,26,0.08),
-    0 4px 12px rgba(209,77,114,0.06),
-    inset 0 1px 0 rgba(255,255,255,0.7);
-  transform-style: preserve-3d;
-  perspective: 1200px;
-  opacity: 0;
-  animation: envelopeFlipIn 1.8s ease-out 0.3s forwards;
-}
-@keyframes envelopeFlipIn {
-  0%   { opacity:0; transform: perspective(1200px) rotateY(-90deg) scale(0.8); }
-  50%  { opacity:1; }
-  80%  { transform: perspective(1200px) rotateY(8deg) scale(1.02); }
-  100% { opacity:1; transform: perspective(1200px) rotateY(0deg) scale(1); }
-}
+    .letterbox.show {
+      height: 60px
+    }
 
-/* Shimmer border effect */
-.envelope::before {
-  content: '';
-  position: absolute; inset: -2px;
-  border-radius: 30px;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(212,168,67,0.3) 25%,
-    rgba(209,77,114,0.3) 50%,
-    rgba(212,168,67,0.3) 75%,
-    transparent 100%
-  );
-  background-size: 200% 100%;
-  z-index: -1;
-  animation: shimmerBorder 4s linear infinite;
-  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  mask-composite: xor;
-  -webkit-mask-composite: xor;
-  padding: 2px;
-}
-@keyframes shimmerBorder {
-  0%   { background-position: 200% 0; }
-  100% { background-position: -200% 0; }
-}
+    /* Cinematic text lines */
+    .cin-line {
+      position: relative;
+      z-index: 5;
+      font-family: 'Outfit', sans-serif;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 1.2s ease, transform 1.2s ease;
+      letter-spacing: 3px;
+      text-transform: uppercase
+    }
 
-/* ══════════════════════════════════════════════
-   TITLE
-   ══════════════════════════════════════════════ */
-.title {
-  text-align: center;
-  margin-bottom: 16px;
-  opacity: 0;
-  animation: titleDrop 1.5s ease-out 1.5s forwards;
-}
-@keyframes titleDrop {
-  0%   { opacity:0; transform: translateY(-40px) scale(0.7); filter: blur(6px); }
-  60%  { transform: translateY(6px) scale(1.03); }
-  100% { opacity:1; transform: translateY(0) scale(1); filter: blur(0); }
-}
-.title h1 {
-  font-family: 'Great Vibes', cursive;
-  font-size: clamp(2.2rem, 6vw, 3.4rem);
-  font-weight: 400;
-  color: var(--deep-rose);
-  line-height: 1.3;
-  text-shadow: 0 2px 12px rgba(209,77,114,0.15);
-}
-.title h1 .heart-icon {
-  display: inline-block;
-  animation: heartBounce 1.4s ease-in-out infinite;
-}
-@keyframes heartBounce {
-  0%, 100% { transform: scale(1) translateY(0); }
-  25%  { transform: scale(1.25) translateY(-4px); }
-  50%  { transform: scale(1) translateY(0); }
-  75%  { transform: scale(1.15) translateY(-2px); }
-}
-.subtitle {
-  font-size: clamp(0.95rem, 2.5vw, 1.15rem);
-  font-style: italic;
-  color: var(--deep-saffron);
-  margin-top: 10px;
-  opacity: 0;
-  animation: fadeIn 1.5s ease-out 2.5s forwards;
-}
+    .cin-line.visible {
+      opacity: 1;
+      transform: translateY(0)
+    }
 
-/* Decorative divider */
-.divider {
-  text-align: center;
-  margin: 32px 0;
-  font-size: 1.4rem;
-  color: var(--gold);
-  letter-spacing: 10px;
-  opacity: 0;
-  animation: dividerReveal 2s ease-out 3s forwards;
-}
-@keyframes dividerReveal {
-  0%   { opacity:0; letter-spacing: 30px; }
-  100% { opacity:1; letter-spacing: 10px; }
-}
+    .cin-line.exit-up {
+      opacity: 0;
+      transform: translateY(-40px)
+    }
 
-/* ══════════════════════════════════════════════
-   STANZAS — each word fades in sequentially
-   ══════════════════════════════════════════════ */
-.stanza {
-  text-align: center;
-  margin: 30px 0;
-  opacity: 0;
-  animation: stanzaReveal 2.2s ease-out forwards;
-}
-.stanza p {
-  font-size: clamp(1.05rem, 2.8vw, 1.28rem);
-  line-height: 2.1;
-  color: var(--dark-text);
-  letter-spacing: 0.02em;
-}
-@keyframes stanzaReveal {
-  0%   { opacity:0; transform: translateY(40px); filter: blur(6px); }
-  100% { opacity:1; transform: translateY(0); filter: blur(0); }
-}
+    .cin-line1 {
+      font-size: clamp(.7rem, 2vw, .9rem);
+      color: rgba(212, 168, 67, 0.7)
+    }
 
-/* Highlight glow on key words */
-.glow-word {
-  position: relative;
-  color: var(--deep-rose);
-  font-weight: 600;
-}
-.glow-word::after {
-  content: '';
-  position: absolute;
-  bottom: -2px; left: -4px; right: -4px;
-  height: 8px;
-  background: rgba(209,77,114,0.12);
-  border-radius: 4px;
-  z-index: -1;
-  animation: glowPulse 3s ease-in-out infinite;
-}
-@keyframes glowPulse {
-  0%, 100% { opacity: 0.3; transform: scaleX(0.9); }
-  50% { opacity: 1; transform: scaleX(1.05); }
-}
+    .cin-line2 {
+      font-size: clamp(2rem, 7vw, 4.5rem);
+      font-family: 'Great Vibes', cursive;
+      text-transform: none;
+      letter-spacing: 1px;
+      color: #fff;
+      text-shadow: 0 0 60px rgba(209, 77, 114, 0.4), 0 0 120px rgba(209, 77, 114, 0.15);
+      margin: 16px 0
+    }
 
-/* Stanza separator */
-.stanza-sep {
-  text-align: center;
-  margin: 8px 0;
-  opacity: 0;
-  animation: sepFade 1s ease-out forwards;
-}
-.stanza-sep span {
-  display: inline-block;
-  color: var(--lotus-pink);
-  font-size: 0.9rem;
-  letter-spacing: 8px;
-  animation: sepFloat 3s ease-in-out infinite;
-}
-@keyframes sepFloat {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-4px); }
-}
-@keyframes sepFade {
-  0%   { opacity: 0; }
-  100% { opacity: 1; }
-}
+    .cin-line3 {
+      font-size: clamp(.65rem, 1.8vw, .8rem);
+      color: rgba(242, 166, 192, 0.6);
+      letter-spacing: 8px
+    }
 
-/* ══════════════════════════════════════════════
-   FOOTER
-   ══════════════════════════════════════════════ */
-.footer {
-  text-align: center;
-  margin-top: 45px;
-  padding-top: 24px;
-  border-top: 1px solid rgba(212,168,67,0.2);
-  opacity: 0;
-}
-.footer p {
-  font-family: 'Great Vibes', cursive;
-  font-size: clamp(1.5rem, 4vw, 2.2rem);
-  color: var(--deep-rose);
-}
-.footer .glowing-heart {
-  display: inline-block;
-  font-size: 2.2rem;
-  animation: heartbeat 1.3s ease-in-out infinite;
-  filter: drop-shadow(0 0 12px rgba(209,77,114,0.6));
-}
-@keyframes heartbeat {
-  0%, 100% { transform: scale(1); }
-  15%  { transform: scale(1.25); }
-  30%  { transform: scale(1); }
-  45%  { transform: scale(1.18); }
-  60%  { transform: scale(1); }
-}
+    /* Heartbeat line */
+    .heartbeat-line {
+      position: relative;
+      z-index: 5;
+      width: 200px;
+      height: 60px;
+      margin: 30px auto 0;
+      opacity: 0;
+      transition: opacity 1.5s ease
+    }
 
-/* Final love explosion */
-.love-explosion {
-  position: fixed; inset: 0;
-  pointer-events: none;
-  z-index: 9999;
-  display: none;
-}
+    .heartbeat-line.visible {
+      opacity: 1
+    }
 
-/* ══════════════════════════════════════════════
-   SCROLL PROGRESS BAR
-   ══════════════════════════════════════════════ */
-.scroll-progress {
-  position: fixed; top: 0; left: 0;
-  height: 3px; width: 0%;
-  background: linear-gradient(90deg, var(--saffron), var(--rose), var(--gold));
-  z-index: 10000;
-  transition: width 0.1s linear;
-  box-shadow: 0 0 8px rgba(209,77,114,0.4);
-}
+    .hb-svg {
+      width: 100%;
+      height: 100%
+    }
 
-/* ══════════════════════════════════════════════
-   RESPONSIVE
-   ══════════════════════════════════════════════ */
-@media (max-width: 520px) {
-  .envelope { padding: 30px 18px; }
-  .stanza p { line-height: 1.9; }
-  .mega-heart { font-size: 70px !important; }
-}
-@keyframes fadeIn {
-  0%   { opacity:0; }
-  100% { opacity:1; }
-}
-</style>
+    .hb-path {
+      stroke: var(--deep-rose, #A3284A);
+      stroke-width: 2;
+      fill: none;
+      stroke-dasharray: 400;
+      stroke-dashoffset: 400;
+      animation: drawHB 2s ease forwards 0.5s
+    }
+
+    @keyframes drawHB {
+      to {
+        stroke-dashoffset: 0
+      }
+    }
+
+    /* Giant heart morph */
+    .morph-heart {
+      position: relative;
+      z-index: 5;
+      font-size: 0;
+      opacity: 0;
+      margin-top: 20px
+    }
+
+    .morph-heart.show {
+      animation: morphIn 1.5s cubic-bezier(.34, 1.56, .64, 1) forwards
+    }
+
+    @keyframes morphIn {
+      0% {
+        font-size: 0;
+        opacity: 0;
+        transform: rotate(-30deg) scale(0)
+      }
+
+      40% {
+        opacity: 1
+      }
+
+      70% {
+        font-size: 100px;
+        transform: rotate(5deg) scale(1.15)
+      }
+
+      100% {
+        font-size: 80px;
+        opacity: 1;
+        transform: rotate(0) scale(1)
+      }
+    }
+
+    .morph-heart.pulse {
+      animation: megaPulse 1.1s ease-in-out infinite
+    }
+
+    @keyframes megaPulse {
+
+      0%,
+      100% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 30px rgba(209, 77, 114, 0.5))
+      }
+
+      30% {
+        transform: scale(1.2);
+        filter: drop-shadow(0 0 80px rgba(209, 77, 114, 0.8))
+      }
+
+      60% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 30px rgba(209, 77, 114, 0.5))
+      }
+
+      80% {
+        transform: scale(1.1);
+        filter: drop-shadow(0 0 50px rgba(209, 77, 114, 0.6))
+      }
+    }
+
+    /* Ripple rings */
+    .ripple-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 4;
+      pointer-events: none
+    }
+
+    .ripple {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border: 1.5px solid rgba(212, 168, 67, 0.6);
+      border-radius: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      opacity: 0
+    }
+
+    .ripple.go {
+      animation: rippleOut 2.5s ease-out forwards
+    }
+
+    @keyframes rippleOut {
+      0% {
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 1
+      }
+
+      100% {
+        transform: translate(-50%, -50%) scale(50);
+        opacity: 0
+      }
+    }
+
+    /* Skip button */
+    .skip-btn {
+      position: absolute;
+      bottom: 30px;
+      right: 30px;
+      z-index: 20;
+      font-family: 'Outfit', sans-serif;
+      font-size: .75rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.3);
+      background: none;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      padding: 8px 20px;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all .3s ease
+    }
+
+    .skip-btn:hover {
+      color: #fff;
+      border-color: rgba(212, 168, 67, 0.6);
+      background: rgba(212, 168, 67, 0.1)
+    }
+
+    /* Tap anywhere */
+    .cin-tap {
+      position: absolute;
+      bottom: 80px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 20;
+      font-family: 'Outfit', sans-serif;
+      font-size: .8rem;
+      color: rgba(242, 166, 192, 0.5);
+      opacity: 0;
+      letter-spacing: 3px
+    }
+
+    .cin-tap.show {
+      animation: tapFade 2.5s ease-in-out infinite
+    }
+
+    @keyframes tapFade {
+
+      0%,
+      100% {
+        opacity: 0
+      }
+
+      50% {
+        opacity: .7
+      }
+    }
+
+    /* ═══════ GLITCH TRANSITION ═══════ */
+    #glitchLayer {
+      position: fixed;
+      inset: 0;
+      z-index: 99998;
+      pointer-events: none;
+      display: none
+    }
+
+    .glitch-bar {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      background: rgba(209, 77, 114, 0.15);
+      height: 2px
+    }
+
+    /* ═══════ PHASE 2: POEM PAGE ═══════ */
+    #poemPage {
+      display: none;
+      position: relative;
+      min-height: 100vh
+    }
+
+    #poemPage.show {
+      display: block
+    }
+
+    /* Animated gradient background */
+    .page-bg {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      background: linear-gradient(135deg, #0a0015 0%, #120020 25%, #0d0018 50%, #08001a 75%, #0a0012 100%);
+      background-size: 400% 400%;
+      animation: bgShift 20s ease infinite
+    }
+
+    @keyframes bgShift {
+
+      0%,
+      100% {
+        background-position: 0% 50%
+      }
+
+      50% {
+        background-position: 100% 50%
+      }
+    }
+
+    /* Ambient light blobs */
+    .light-blob {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+      z-index: 0;
+      opacity: .08;
+      animation: blobFloat 15s ease-in-out infinite alternate
+    }
+
+    .blob1 {
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, #D14D72, transparent);
+      top: -100px;
+      left: -100px;
+      animation-duration: 18s
+    }
+
+    .blob2 {
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, #E8913A, transparent);
+      bottom: -80px;
+      right: -80px;
+      animation-duration: 22s;
+      animation-delay: 3s
+    }
+
+    .blob3 {
+      width: 350px;
+      height: 350px;
+      background: radial-gradient(circle, #D4A843, transparent);
+      top: 40%;
+      left: 60%;
+      animation-duration: 25s;
+      animation-delay: 6s
+    }
+
+    @keyframes blobFloat {
+      0% {
+        transform: translate(0, 0) scale(1)
+      }
+
+      33% {
+        transform: translate(40px, -30px) scale(1.1)
+      }
+
+      66% {
+        transform: translate(-30px, 40px) scale(0.9)
+      }
+
+      100% {
+        transform: translate(20px, -20px) scale(1.05)
+      }
+    }
+
+    /* Firefly particles */
+    .firefly {
+      position: fixed;
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 1;
+      animation: fireflyFloat linear infinite
+    }
+
+    @keyframes fireflyFloat {
+      0% {
+        transform: translate(0, 0);
+        opacity: 0
+      }
+
+      10% {
+        opacity: .8
+      }
+
+      50% {
+        transform: translate(var(--fx), var(--fy))
+      }
+
+      90% {
+        opacity: .3
+      }
+
+      100% {
+        transform: translate(var(--fx2), var(--fy2));
+        opacity: 0
+      }
+    }
+
+    /* Scroll progress */
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 2px;
+      width: 0;
+      z-index: 10000;
+      background: linear-gradient(90deg, #D14D72, #D4A843, #E8913A, #D14D72);
+      background-size: 300% 100%;
+      animation: progressShine 3s linear infinite;
+      box-shadow: 0 0 10px rgba(209, 77, 114, 0.5);
+      transition: width .15s linear
+    }
+
+    @keyframes progressShine {
+      0% {
+        background-position: 300% 0
+      }
+
+      100% {
+        background-position: 0% 0
+      }
+    }
+
+    /* ═══════ POEM CARD ═══════ */
+    .poem-container {
+      position: relative;
+      z-index: 2;
+      max-width: 760px;
+      width: 92%;
+      margin: 0 auto;
+      padding: 60px 20px 100px
+    }
+
+    .poem-card {
+      position: relative;
+      background: rgba(15, 5, 25, 0.6);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(212, 168, 67, 0.15);
+      border-radius: 32px;
+      padding: 60px 48px;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(60px);
+      transition: opacity 1.5s ease, transform 1.5s ease
+    }
+
+    .poem-card.visible {
+      opacity: 1;
+      transform: translateY(0)
+    }
+
+    /* Shimmer sweep on card */
+    .poem-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: conic-gradient(from 0deg, transparent 0%, rgba(212, 168, 67, 0.03) 10%, transparent 20%);
+      animation: cardSweep 8s linear infinite;
+      pointer-events: none
+    }
+
+    @keyframes cardSweep {
+      to {
+        transform: rotate(360deg)
+      }
+    }
+
+    /* Gold corner accents */
+    .corner-accent {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      border-color: rgba(212, 168, 67, 0.3);
+      border-style: solid;
+      pointer-events: none;
+      z-index: 3
+    }
+
+    .ca-tl {
+      top: 16px;
+      left: 16px;
+      border-width: 2px 0 0 2px;
+      border-radius: 4px 0 0 0
+    }
+
+    .ca-tr {
+      top: 16px;
+      right: 16px;
+      border-width: 2px 2px 0 0;
+      border-radius: 0 4px 0 0
+    }
+
+    .ca-bl {
+      bottom: 16px;
+      left: 16px;
+      border-width: 0 0 2px 2px;
+      border-radius: 0 0 0 4px
+    }
+
+    .ca-br {
+      bottom: 16px;
+      right: 16px;
+      border-width: 0 2px 2px 0;
+      border-radius: 0 0 4px 0
+    }
+
+    /* ═══════ TITLE ═══════ */
+    .poem-title {
+      text-align: center;
+      margin-bottom: 20px;
+      opacity: 0;
+      animation: none
+    }
+
+    .poem-title.reveal {
+      animation: titleReveal 2s cubic-bezier(.4, 0, .2, 1) forwards
+    }
+
+    @keyframes titleReveal {
+      0% {
+        opacity: 0;
+        transform: translateY(-30px) scale(.85);
+        filter: blur(10px)
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0)
+      }
+    }
+
+    .poem-title h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(2.2rem, 6vw, 3.6rem);
+      font-weight: 400;
+      color: #fff;
+      line-height: 1.3;
+      text-shadow: 0 0 40px rgba(209, 77, 114, 0.25)
+    }
+
+    .poem-title h1 .t-heart {
+      display: inline-block;
+      animation: tHeartPulse 1.5s ease-in-out infinite
+    }
+
+    @keyframes tHeartPulse {
+
+      0%,
+      100% {
+        transform: scale(1)
+      }
+
+      40% {
+        transform: scale(1.2)
+      }
+
+      60% {
+        transform: scale(1)
+      }
+    }
+
+    .poem-subtitle {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(.75rem, 2vw, .9rem);
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: rgba(212, 168, 67, 0.5);
+      margin-top: 12px;
+      opacity: 0
+    }
+
+    .poem-subtitle.show {
+      animation: fadeUp 1.5s ease forwards
+    }
+
+    /* Divider */
+    .poem-divider {
+      text-align: center;
+      margin: 35px 0;
+      overflow: hidden;
+      height: 24px;
+      opacity: 0
+    }
+
+    .poem-divider.show {
+      opacity: 1
+    }
+
+    .poem-divider span {
+      display: inline-block;
+      font-size: 1rem;
+      color: rgba(212, 168, 67, 0.4);
+      letter-spacing: 12px
+    }
+
+    .poem-divider span .dv {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(20px)
+    }
+
+    .poem-divider.show .dv {
+      animation: dvPop .5s ease forwards
+    }
+
+    /* ═══════ STANZAS ═══════ */
+    .stanza {
+      text-align: center;
+      margin: 36px 0;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: opacity 1.2s ease, transform 1.2s ease
+    }
+
+    .stanza.visible {
+      opacity: 1;
+      transform: translateY(0)
+    }
+
+    .stanza p {
+      font-size: clamp(1.05rem, 2.8vw, 1.3rem);
+      line-height: 2.2;
+      color: rgba(255, 238, 244, 0.85);
+      letter-spacing: .02em
+    }
+
+    /* Typewriter per-word reveal inside stanza */
+    .stanza .word {
+      display: inline;
+      opacity: 0;
+      transition: opacity .4s ease, filter .4s ease;
+      filter: blur(4px)
+    }
+
+    .stanza.visible .word {
+      opacity: 1;
+      filter: blur(0)
+    }
+
+    /* Glowing keywords */
+    .glow {
+      color: #D14D72;
+      font-weight: 600;
+      position: relative
+    }
+
+    .glow::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: -3px;
+      right: -3px;
+      height: 6px;
+      background: rgba(209, 77, 114, 0.1);
+      border-radius: 3px;
+      animation: glowPulse 3s ease-in-out infinite
+    }
+
+    @keyframes glowPulse {
+
+      0%,
+      100% {
+        opacity: .2;
+        transform: scaleX(.9)
+      }
+
+      50% {
+        opacity: .8;
+        transform: scaleX(1.05)
+      }
+    }
+
+    /* Stanza number badge */
+    .stanza-num {
+      display: block;
+      margin: 0 auto 14px;
+      width: 28px;
+      height: 28px;
+      line-height: 28px;
+      text-align: center;
+      font-family: 'Outfit', sans-serif;
+      font-size: .65rem;
+      letter-spacing: 0;
+      color: rgba(212, 168, 67, 0.4);
+      border: 1px solid rgba(212, 168, 67, 0.15);
+      border-radius: 50%;
+      opacity: 0;
+      transform: scale(0);
+      transition: all .8s cubic-bezier(.34, 1.56, .64, 1)
+    }
+
+    .stanza.visible .stanza-num {
+      opacity: 1;
+      transform: scale(1)
+    }
+
+    /* Separator */
+    .sep {
+      text-align: center;
+      margin: 10px 0;
+      opacity: 0;
+      transition: opacity 1s ease
+    }
+
+    .sep.visible {
+      opacity: 1
+    }
+
+    .sep .sep-inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px
+    }
+
+    .sep .sep-line {
+      width: 40px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(212, 168, 67, 0.3), transparent)
+    }
+
+    .sep .sep-dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: rgba(212, 168, 67, 0.4);
+      animation: sepDotGlow 2s ease-in-out infinite
+    }
+
+    @keyframes sepDotGlow {
+
+      0%,
+      100% {
+        opacity: .3;
+        box-shadow: 0 0 4px rgba(212, 168, 67, 0.2)
+      }
+
+      50% {
+        opacity: 1;
+        box-shadow: 0 0 12px rgba(212, 168, 67, 0.5)
+      }
+    }
+
+    /* ═══════ FOOTER ═══════ */
+    .poem-footer {
+      text-align: center;
+      margin-top: 50px;
+      padding-top: 28px;
+      border-top: 1px solid rgba(212, 168, 67, 0.1);
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 1.5s ease, transform 1.5s ease
+    }
+
+    .poem-footer.visible {
+      opacity: 1;
+      transform: translateY(0)
+    }
+
+    .poem-footer p {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(1.5rem, 4vw, 2.4rem);
+      color: #fff
+    }
+
+    .poem-footer .f-heart {
+      display: inline-block;
+      font-size: 2.4rem;
+      animation: fHeartbeat 1.2s ease-in-out infinite;
+      filter: drop-shadow(0 0 20px rgba(209, 77, 114, 0.6))
+    }
+
+    @keyframes fHeartbeat {
+
+      0%,
+      100% {
+        transform: scale(1)
+      }
+
+      20% {
+        transform: scale(1.3)
+      }
+
+      40% {
+        transform: scale(1)
+      }
+
+      60% {
+        transform: scale(1.2)
+      }
+
+      80% {
+        transform: scale(1)
+      }
+    }
+
+    /* Re-read prompt at bottom */
+    .reread {
+      text-align: center;
+      padding: 40px 20px 80px;
+      opacity: 0;
+      transition: opacity 1s ease
+    }
+
+    .reread.visible {
+      opacity: 1
+    }
+
+    .reread a {
+      font-family: 'Outfit', sans-serif;
+      font-size: .75rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: rgba(212, 168, 67, 0.4);
+      text-decoration: none;
+      border: 1px solid rgba(212, 168, 67, 0.15);
+      padding: 10px 28px;
+      border-radius: 30px;
+      transition: all .3s ease;
+      display: inline-block
+    }
+
+    .reread a:hover {
+      color: #D4A843;
+      border-color: rgba(212, 168, 67, 0.5);
+      background: rgba(212, 168, 67, 0.05);
+      box-shadow: 0 0 20px rgba(212, 168, 67, 0.1)
+    }
+
+    /* Sparkle trail canvas */
+    #sparkleCanvas {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9997
+    }
+
+    /* Floating ambient */
+    .ambient {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      overflow: hidden
+    }
+
+    .fl-heart {
+      position: absolute;
+      bottom: -50px;
+      opacity: 0;
+      animation: flUp linear infinite
+    }
+
+    @keyframes flUp {
+      0% {
+        transform: translateY(0) translateX(0) rotate(0) scale(.7);
+        opacity: 0
+      }
+
+      8% {
+        opacity: .5
+      }
+
+      25% {
+        transform: translateY(-28vh) translateX(20px) rotate(40deg)
+      }
+
+      50% {
+        transform: translateY(-55vh) translateX(-15px) rotate(120deg) scale(1)
+      }
+
+      75% {
+        transform: translateY(-82vh) translateX(10px) rotate(220deg)
+      }
+
+      92% {
+        opacity: .15
+      }
+
+      100% {
+        transform: translateY(-115vh) translateX(-8px) rotate(360deg) scale(1.1);
+        opacity: 0
+      }
+    }
+
+    .fl-petal {
+      position: absolute;
+      bottom: -40px;
+      width: 14px;
+      height: 20px;
+      border-radius: 50% 0 50% 50%;
+      opacity: 0;
+      animation: flPetal linear infinite
+    }
+
+    @keyframes flPetal {
+      0% {
+        transform: translateY(0) rotate(0) translateX(0);
+        opacity: 0
+      }
+
+      10% {
+        opacity: .45
+      }
+
+      30% {
+        transform: translateY(-30vh) rotate(90deg) translateX(40px)
+      }
+
+      60% {
+        transform: translateY(-60vh) rotate(200deg) translateX(-30px)
+      }
+
+      90% {
+        opacity: .1
+      }
+
+      100% {
+        transform: translateY(-115vh) rotate(380deg) translateX(15px);
+        opacity: 0
+      }
+    }
+
+    /* Fade-up utility */
+    @keyframes fadeUp {
+      0% {
+        opacity: 0;
+        transform: translateY(20px)
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0)
+      }
+    }
+
+    /* ═══════ RESPONSIVE ═══════ */
+    @media(max-width:600px) {
+      .poem-card {
+        padding: 36px 22px;
+        border-radius: 24px
+      }
+
+      .letterbox.show {
+        height: 35px
+      }
+
+      .corner-accent {
+        width: 24px;
+        height: 24px
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<!-- ═══════════ SCROLL PROGRESS ═══════════ -->
-<div class="scroll-progress" id="scrollProgress"></div>
-
-<!-- ═══════════ PHASE 1: INTRO ═══════════ -->
-<div id="intro">
-  <canvas id="introParticles"></canvas>
-  <div style="position:relative; display:flex; flex-direction:column; align-items:center; z-index:2;">
-    <div class="heart-ring"></div>
-    <div class="heart-ring"></div>
-    <div class="heart-ring"></div>
-    <div class="mega-heart" id="megaHeart">❤️</div>
+  <!-- LOADER -->
+  <div id="loader">
+    <div class="loader-ring"></div>
+    <div class="loader-text">Preparing something special...</div>
   </div>
-  <div class="intro-name" id="introName"></div>
-  <div class="intro-subtitle" id="introSub">Happy Valentine's Day</div>
-  <div class="tap-prompt" id="tapPrompt">tap anywhere to open your gift...</div>
-</div>
 
-<!-- ═══════════ SPARKLE TRAIL CANVAS ═══════════ -->
-<canvas id="sparkleCanvas"></canvas>
+  <!-- STARFIELD -->
+  <canvas id="starfield"></canvas>
 
-<!-- ═══════════ PHASE 2: MAIN PAGE ═══════════ -->
-<div id="mainPage">
-  <div class="aurora"></div>
+  <!-- SPARKLE TRAIL -->
+  <canvas id="sparkleCanvas"></canvas>
 
-  <!-- Lotus corners -->
-  <div class="lotus lotus-tl">🪷</div>
-  <div class="lotus lotus-tr">🪷</div>
-  <div class="lotus lotus-bl">🪷</div>
-  <div class="lotus lotus-br">🪷</div>
+  <!-- GLITCH TRANSITION -->
+  <div id="glitchLayer"></div>
 
-  <!-- Ambient floating elements -->
-  <div class="ambient-bg" id="ambientBg"></div>
+  <!-- ═══════ CINEMATIC INTRO ═══════ -->
+  <div id="cinematic">
+    <canvas id="nebula"></canvas>
+    <div class="cin-overlay"></div>
+    <div class="letterbox letterbox-top" id="lbTop"></div>
+    <div class="letterbox letterbox-bot" id="lbBot"></div>
 
-  <!-- Poem -->
-  <div class="container">
-    <div class="envelope" id="envelope">
-      <div class="title">
-        <h1><span class="heart-icon">💝</span> My Eternal Love for You, Shruthi <span class="heart-icon">💝</span></h1>
-        <p class="subtitle">From THARUN, with all my heart</p>
+    <div class="ripple-container" id="ripples"></div>
+
+    <div class="cin-line cin-line1" id="cl1">A Valentine's Day Letter</div>
+    <div class="cin-line cin-line2" id="cl2">For You, Shruthi</div>
+    <div class="cin-line cin-line3" id="cl3">From Tharun — with all his heart</div>
+    <div class="heartbeat-line" id="hbLine">
+      <svg class="hb-svg" viewBox="0 0 200 60">
+        <path class="hb-path" d="M0,30 L40,30 L50,10 L60,50 L70,20 L80,40 L90,30 L200,30" />
+      </svg>
+    </div>
+    <div class="morph-heart" id="morphHeart">❤️</div>
+
+    <div class="cin-tap" id="cinTap">tap anywhere to open</div>
+    <button class="skip-btn" id="skipBtn">Skip →</button>
+  </div>
+
+  <!-- ═══════ POEM PAGE ═══════ -->
+  <div id="poemPage">
+    <div class="page-bg"></div>
+    <div class="light-blob blob1"></div>
+    <div class="light-blob blob2"></div>
+    <div class="light-blob blob3"></div>
+    <div class="ambient" id="ambientBg"></div>
+    <div class="scroll-progress" id="scrollProg"></div>
+
+    <div class="poem-container">
+      <div class="poem-card" id="poemCard">
+        <div class="corner-accent ca-tl"></div>
+        <div class="corner-accent ca-tr"></div>
+        <div class="corner-accent ca-bl"></div>
+        <div class="corner-accent ca-br"></div>
+
+        <div class="poem-title" id="poemTitle">
+          <h1><span class="t-heart">💝</span> My Eternal Love for You, Shruthi <span class="t-heart">💝</span></h1>
+          <p class="poem-subtitle" id="poemSub">Happy Valentine's Day — From THARUN</p>
+        </div>
+
+        <div class="poem-divider" id="divider1"><span>
+            <span class="dv">✦</span><span class="dv">&nbsp;❀&nbsp;</span><span class="dv">✦</span><span
+              class="dv">&nbsp;❀&nbsp;</span><span class="dv">✦</span>
+          </span></div>
+
+        <!-- Stanza 1 -->
+        <div class="stanza" id="s1">
+          <span class="stanza-num">I</span>
+          <p>Like <span class="glow">jasmine</span> blooming in the morning dew,<br>
+            My whole world changed the day I found <span class="glow">you</span>.<br>
+            Your smile is brighter than the <span class="glow">temple lamp</span> at night,<br>
+            You turned my ordinary days into something bright.</p>
+        </div>
+        <div class="sep">
+          <div class="sep-inner">
+            <div class="sep-line"></div>
+            <div class="sep-dot"></div>
+            <div class="sep-line"></div>
+          </div>
+        </div>
+
+        <!-- Stanza 2 -->
+        <div class="stanza" id="s2">
+          <span class="stanza-num">II</span>
+          <p>When the <span class="glow">monsoon rains</span> would fall upon our lane,<br>
+            Your gentle voice would wash away my every pain.<br>
+            Like <span class="glow">kolam</span> drawn at dawn with patience and with care,<br>
+            You painted love in corners I forgot were there.</p>
+        </div>
+        <div class="sep">
+          <div class="sep-inner">
+            <div class="sep-line"></div>
+            <div class="sep-dot"></div>
+            <div class="sep-line"></div>
+          </div>
+        </div>
+
+        <!-- Stanza 3 — Dreams -->
+        <div class="stanza" id="s3">
+          <span class="stanza-num">III</span>
+          <p>I dream of sitting with you on a terrace watching <span class="glow">stars</span>,<br>
+            Sharing <span class="glow">filter coffee</span>, forgetting all our scars.<br>
+            One day I'll hear your laughter in the evening breeze,<br>
+            And all these <span class="glow">dreams</span> I carry now will finally find their ease.</p>
+        </div>
+        <div class="sep">
+          <div class="sep-inner">
+            <div class="sep-line"></div>
+            <div class="sep-dot"></div>
+            <div class="sep-line"></div>
+          </div>
+        </div>
+
+        <!-- Stanza 4 -->
+        <div class="stanza" id="s4">
+          <span class="stanza-num">IV</span>
+          <p>You held my hand when I was lost and could not see,<br>
+            You whispered, <span class="glow">'I believe in you,'</span> and set me free.<br>
+            No <span class="glow">temple bell</span> could ring as sweetly as your name,<br>
+            Since you walked into my life, nothing is the same.</p>
+        </div>
+        <div class="sep">
+          <div class="sep-inner">
+            <div class="sep-line"></div>
+            <div class="sep-dot"></div>
+            <div class="sep-line"></div>
+          </div>
+        </div>
+
+        <!-- Stanza 5 -->
+        <div class="stanza" id="s5">
+          <span class="stanza-num">V</span>
+          <p>Like the river <span class="glow">Kaveri</span> that flows and never ends,<br>
+            My love for you, <span class="glow">Shruthi</span>, forever bends and bends.<br>
+            You are the <span class="glow">turmeric thread</span> that ties me to this life,<br>
+            My blessing, my companion, my joy beyond all strife.</p>
+        </div>
+        <div class="sep">
+          <div class="sep-inner">
+            <div class="sep-line"></div>
+            <div class="sep-dot"></div>
+            <div class="sep-line"></div>
+          </div>
+        </div>
+
+        <!-- Stanza 6 -->
+        <div class="stanza" id="s6">
+          <span class="stanza-num">VI</span>
+          <p>So hear me now, my love, this promise that I make —<br>
+            I'll stand beside you every step for both our sakes.<br>
+            Through every season, every sunrise, every prayer,<br>
+            I'm yours, <span class="glow">Shruthi</span> — today, tomorrow, <span class="glow">everywhere</span>.</p>
+        </div>
+
+        <div class="poem-footer" id="poemFooter">
+          <p>Forever yours, THARUN <span class="f-heart">❤️</span></p>
+        </div>
       </div>
 
-      <div class="divider">✦ ❀ ✦ ❀ ✦</div>
-
-      <div class="stanza" data-delay="3.5">
-        <p>Like <span class="glow-word">jasmine</span> blooming in the morning dew,<br>
-        My whole world changed the day I found <span class="glow-word">you</span>.<br>
-        Your smile is brighter than the <span class="glow-word">temple lamp</span> at night,<br>
-        You turned my ordinary days into something bright.</p>
-      </div>
-      <div class="stanza-sep"><span>❀ ✦ ❀</span></div>
-
-      <div class="stanza" data-delay="6">
-        <p>When the <span class="glow-word">monsoon rains</span> would fall upon our lane,<br>
-        Your gentle voice would wash away my every pain.<br>
-        Like <span class="glow-word">kolam</span> drawn at dawn with patience and with care,<br>
-        You painted love in corners I forgot were there.</p>
-      </div>
-      <div class="stanza-sep"><span>❀ ✦ ❀</span></div>
-
-      <div class="stanza" data-delay="8.5">
-        <p>We sat on that old terrace watching crows fly home,<br>
-        Sharing <span class="glow-word">filter coffee</span>, knowing we would never be alone.<br>
-        Your <span class="glow-word">amma's</span> laughter echoing through the evening breeze,<br>
-        These simple little moments put my restless heart at ease.</p>
-      </div>
-      <div class="stanza-sep"><span>❀ ✦ ❀</span></div>
-
-      <div class="stanza" data-delay="11">
-        <p>You held my hand when I was lost and could not see,<br>
-        You whispered, <span class="glow-word">'I believe in you,'</span> and set me free.<br>
-        No <span class="glow-word">temple bell</span> could ring as sweetly as your name,<br>
-        Since you walked into my life, nothing is the same.</p>
-      </div>
-      <div class="stanza-sep"><span>❀ ✦ ❀</span></div>
-
-      <div class="stanza" data-delay="13.5">
-        <p>Like the river <span class="glow-word">Kaveri</span> that flows and never ends,<br>
-        My love for you, <span class="glow-word">Shruthi</span>, forever bends and bends.<br>
-        You are the <span class="glow-word">turmeric thread</span> that ties me to this life,<br>
-        My blessing, my companion, my joy beyond all strife.</p>
-      </div>
-      <div class="stanza-sep"><span>❀ ✦ ❀</span></div>
-
-      <div class="stanza" data-delay="16">
-        <p>So hear me now, my love, this promise that I make —<br>
-        I'll stand beside you every step for both our sakes.<br>
-        Through every season, every sunrise, every prayer,<br>
-        I'm yours, <span class="glow-word">Shruthi</span> — today, tomorrow, <span class="glow-word">everywhere</span>.</p>
-      </div>
-
-      <div class="footer" id="poemFooter">
-        <p>Forever yours, THARUN <span class="glowing-heart">❤️</span></p>
+      <div class="reread" id="reread">
+        <a href="#poemCard">↑ Read Again ↑</a>
       </div>
     </div>
   </div>
-</div>
 
-<!-- ═══════════ LOVE EXPLOSION OVERLAY ═══════════ -->
-<canvas id="explosionCanvas" class="love-explosion"></canvas>
+  <script>
+    (function () {
+      'use strict';
 
-<script>
-(function() {
-  'use strict';
+      /* ═══════ STARFIELD (3D parallax stars) ═══════ */
+      var sfc = document.getElementById('starfield');
+      var sfCtx = sfc.getContext('2d');
+      var stars = [];
+      var STAR_COUNT = 250;
 
-  /* ───────── INTRO PARTICLE SYSTEM ───────── */
-  var ic = document.getElementById('introParticles');
-  var ictx = ic.getContext('2d');
-  var iParticles = [];
-  var introActive = true;
-
-  function resizeIntroCanvas() {
-    ic.width = window.innerWidth;
-    ic.height = window.innerHeight;
-  }
-  resizeIntroCanvas();
-  window.addEventListener('resize', resizeIntroCanvas);
-
-  // Spawn intro particles
-  for (var i = 0; i < 100; i++) {
-    iParticles.push({
-      x: Math.random() * ic.width,
-      y: Math.random() * ic.height,
-      r: Math.random() * 2.5 + 0.5,
-      dx: (Math.random() - 0.5) * 0.6,
-      dy: (Math.random() - 0.5) * 0.6,
-      alpha: Math.random() * 0.5 + 0.1,
-      pulse: Math.random() * Math.PI * 2,
-      color: ['#D14D72','#D4A843','#F2A6C0','#E8913A','#fff'][Math.floor(Math.random()*5)]
-    });
-  }
-
-  function animateIntro() {
-    if (!introActive) return;
-    ictx.clearRect(0, 0, ic.width, ic.height);
-    for (var p of iParticles) {
-      p.x += p.dx; p.y += p.dy;
-      p.pulse += 0.03;
-      var a = p.alpha * (0.5 + 0.5 * Math.sin(p.pulse));
-      if (p.x < 0) p.x = ic.width; if (p.x > ic.width) p.x = 0;
-      if (p.y < 0) p.y = ic.height; if (p.y > ic.height) p.y = 0;
-      ictx.beginPath();
-      ictx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ictx.fillStyle = p.color;
-      ictx.globalAlpha = a;
-      ictx.fill();
-      // Glow
-      ictx.beginPath();
-      ictx.arc(p.x, p.y, p.r * 3, 0, Math.PI * 2);
-      ictx.fillStyle = p.color;
-      ictx.globalAlpha = a * 0.15;
-      ictx.fill();
-    }
-    ictx.globalAlpha = 1;
-    requestAnimationFrame(animateIntro);
-  }
-  animateIntro();
-
-  /* ───────── INTRO NAME LETTER-BY-LETTER ───────── */
-  var nameText = 'For You, Shruthi...';
-  var nameEl = document.getElementById('introName');
-  var subEl = document.getElementById('introSub');
-  var tapEl = document.getElementById('tapPrompt');
-
-  setTimeout(function() {
-    for (var c = 0; c < nameText.length; c++) {
-      var sp = document.createElement('span');
-      sp.textContent = nameText[c] === ' ' ? '\u00A0' : nameText[c];
-      sp.style.animationDelay = (2.8 + c * 0.09) + 's';
-      nameEl.appendChild(sp);
-    }
-  }, 100);
-
-  setTimeout(function() {
-    subEl.style.animation = 'fadeIn 1.5s ease-out forwards';
-  }, 5000);
-
-  setTimeout(function() {
-    var mh = document.getElementById('megaHeart');
-    mh.classList.add('pulse');
-    tapEl.style.animationPlayState = 'running';
-  }, 5500);
-
-  /* ───────── TRANSITION: Intro → Main ───────── */
-  var transitioned = false;
-  function triggerTransition() {
-    if (transitioned) return;
-    transitioned = true;
-
-    // Heart explosion
-    fireExplosion();
-
-    setTimeout(function() {
-      document.getElementById('intro').classList.add('hide');
-      introActive = false;
-      var mp = document.getElementById('mainPage');
-      mp.classList.add('show');
-      mp.style.display = 'block';
-      startPoemAnimations();
-      startSparkleTrail();
-    }, 800);
-  }
-
-  document.getElementById('intro').addEventListener('click', triggerTransition);
-  document.getElementById('intro').addEventListener('touchend', function(e) {
-    e.preventDefault(); triggerTransition();
-  });
-  // Auto transition after 9s
-  setTimeout(function() { triggerTransition(); }, 9000);
-
-  /* ───────── HEART EXPLOSION ON TRANSITION ───────── */
-  var ec = document.getElementById('explosionCanvas');
-  var ectx = ec.getContext('2d');
-  var exParticles = [];
-
-  function fireExplosion() {
-    ec.style.display = 'block';
-    ec.width = window.innerWidth;
-    ec.height = window.innerHeight;
-    var cx = ec.width / 2, cy = ec.height / 2;
-    var emojis = ['❤️','💖','💕','💗','🌸','🌺','✨','💝','🪷'];
-    for (var i = 0; i < 80; i++) {
-      var angle = (Math.PI * 2 / 80) * i + (Math.random() - 0.5) * 0.5;
-      var speed = 3 + Math.random() * 8;
-      exParticles.push({
-        x: cx, y: cy,
-        vx: Math.cos(angle) * speed,
-        vy: Math.sin(angle) * speed,
-        emoji: emojis[Math.floor(Math.random() * emojis.length)],
-        size: 14 + Math.random() * 22,
-        life: 1,
-        decay: 0.008 + Math.random() * 0.012,
-        spin: (Math.random() - 0.5) * 6,
-        angle: 0
-      });
-    }
-    animateExplosion();
-  }
-
-  function animateExplosion() {
-    ectx.clearRect(0, 0, ec.width, ec.height);
-    var alive = false;
-    for (var p of exParticles) {
-      if (p.life <= 0) continue;
-      alive = true;
-      p.x += p.vx; p.y += p.vy;
-      p.vy += 0.08; // gravity
-      p.vx *= 0.99;
-      p.life -= p.decay;
-      p.angle += p.spin * 0.02;
-      ectx.save();
-      ectx.translate(p.x, p.y);
-      ectx.rotate(p.angle);
-      ectx.globalAlpha = Math.max(0, p.life);
-      ectx.font = p.size + 'px serif';
-      ectx.textAlign = 'center';
-      ectx.fillText(p.emoji, 0, 0);
-      ectx.restore();
-    }
-    if (alive) {
-      requestAnimationFrame(animateExplosion);
-    } else {
-      ec.style.display = 'none';
-      exParticles = [];
-    }
-  }
-
-  /* ───────── POEM STANZA ANIMATIONS (Intersection Observer) ───────── */
-  function startPoemAnimations() {
-    var stanzas = document.querySelectorAll('.stanza');
-    var seps = document.querySelectorAll('.stanza-sep');
-    var footer = document.getElementById('poemFooter');
-
-    // Use Intersection Observer for scroll-triggered reveals
-    if ('IntersectionObserver' in window) {
-      var obs = new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry) {
-          if (entry.isIntersecting) {
-            entry.target.style.animationPlayState = 'running';
-            obs.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.25 });
-
-      stanzas.forEach(function(s, i) {
-        s.style.animationDelay = '0.15s';
-        s.style.animationPlayState = 'paused';
-        obs.observe(s);
-      });
-      seps.forEach(function(s) {
-        s.style.animationDelay = '0.3s';
-        s.style.animationPlayState = 'paused';
-        obs.observe(s);
-      });
-      footer.style.animation = 'fadeIn 2s ease-out forwards';
-      footer.style.animationDelay = '0.5s';
-      footer.style.animationPlayState = 'paused';
-      obs.observe(footer);
-    } else {
-      // Fallback: timed reveals
-      stanzas.forEach(function(s, i) {
-        s.style.animationDelay = (3 + i * 2.5) + 's';
-      });
-      footer.style.animation = 'fadeIn 2s ease-out forwards';
-      footer.style.animationDelay = (3 + stanzas.length * 2.5 + 1) + 's';
-    }
-  }
-
-  /* ───────── SPARKLE TRAIL (follows mouse/touch) ───────── */
-  var sc = document.getElementById('sparkleCanvas');
-  var sctx = sc.getContext('2d');
-  var sparkles = [];
-  var mouseX = -100, mouseY = -100;
-  var sparkleActive = false;
-
-  function resizeSparkle() {
-    sc.width = window.innerWidth;
-    sc.height = window.innerHeight;
-  }
-
-  function startSparkleTrail() {
-    sparkleActive = true;
-    resizeSparkle();
-    window.addEventListener('resize', resizeSparkle);
-    document.addEventListener('mousemove', function(e) {
-      mouseX = e.clientX; mouseY = e.clientY;
-      spawnSparkles(mouseX, mouseY, 2);
-    });
-    document.addEventListener('touchmove', function(e) {
-      var t = e.touches[0];
-      mouseX = t.clientX; mouseY = t.clientY;
-      spawnSparkles(mouseX, mouseY, 2);
-    }, { passive: true });
-    animateSparkles();
-  }
-
-  function spawnSparkles(x, y, count) {
-    var colors = ['#D4A843','#D14D72','#F2A6C0','#E8913A','#fff'];
-    for (var i = 0; i < count; i++) {
-      sparkles.push({
-        x: x + (Math.random()-0.5)*12,
-        y: y + (Math.random()-0.5)*12,
-        r: Math.random() * 3.5 + 1,
-        vx: (Math.random()-0.5) * 2,
-        vy: (Math.random()-0.5) * 2 - 1,
-        life: 1,
-        decay: 0.015 + Math.random() * 0.02,
-        color: colors[Math.floor(Math.random()*colors.length)]
-      });
-    }
-  }
-
-  function animateSparkles() {
-    if (!sparkleActive) return;
-    sctx.clearRect(0, 0, sc.width, sc.height);
-    for (var i = sparkles.length - 1; i >= 0; i--) {
-      var p = sparkles[i];
-      p.x += p.vx; p.y += p.vy;
-      p.vy += 0.02;
-      p.life -= p.decay;
-      if (p.life <= 0) { sparkles.splice(i, 1); continue; }
-      // Star shape
-      sctx.save();
-      sctx.translate(p.x, p.y);
-      sctx.globalAlpha = p.life;
-      sctx.fillStyle = p.color;
-      sctx.shadowColor = p.color;
-      sctx.shadowBlur = 8;
-      // Draw a 4-point star
-      sctx.beginPath();
-      var r = p.r * p.life;
-      for (var s = 0; s < 8; s++) {
-        var a = (Math.PI / 4) * s;
-        var dist = s % 2 === 0 ? r : r * 0.4;
-        var sx = Math.cos(a) * dist;
-        var sy = Math.sin(a) * dist;
-        if (s === 0) sctx.moveTo(sx, sy);
-        else sctx.lineTo(sx, sy);
+      function initStarfield() {
+        sfc.width = innerWidth; sfc.height = innerHeight;
+        stars = [];
+        for (var i = 0; i < STAR_COUNT; i++) {
+          stars.push({
+            x: Math.random() * sfc.width,
+            y: Math.random() * sfc.height,
+            z: Math.random() * 3 + 0.5,
+            r: Math.random() * 1.5 + 0.3,
+            flicker: Math.random() * Math.PI * 2,
+            color: ['#fff', '#ffeef4', '#D4A843', '#F2A6C0'][Math.floor(Math.random() * 4)]
+          });
+        }
       }
-      sctx.closePath();
-      sctx.fill();
-      sctx.restore();
-    }
-    requestAnimationFrame(animateSparkles);
-  }
+      initStarfield();
+      addEventListener('resize', initStarfield);
 
-  /* ───────── AMBIENT FLOATING ELEMENTS ───────── */
-  var bg = document.getElementById('ambientBg');
-  var floaters = ['💕','❤️','💖','💗','🌸','🌺','✨','🪷','💐','🌹'];
-  // 30 floating hearts/flowers
-  for (var i = 0; i < 30; i++) {
-    var span = document.createElement('span');
-    span.className = 'float-heart';
-    span.textContent = floaters[i % floaters.length];
-    span.style.left = (Math.random()*100).toFixed(1) + '%';
-    span.style.fontSize = (1 + Math.random()*1.4).toFixed(2) + 'rem';
-    span.style.animationDuration = (10 + Math.random()*14).toFixed(1) + 's';
-    span.style.animationDelay = (Math.random()*18).toFixed(1) + 's';
-    bg.appendChild(span);
-  }
-  // 20 CSS petals
-  for (var j = 0; j < 20; j++) {
-    var petal = document.createElement('div');
-    petal.className = 'petal';
-    petal.style.left = (Math.random()*100).toFixed(1) + '%';
-    petal.style.animationDuration = (12 + Math.random()*14).toFixed(1) + 's';
-    petal.style.animationDelay = (Math.random()*20).toFixed(1) + 's';
-    petal.style.width = (12 + Math.random()*10) + 'px';
-    petal.style.height = (16 + Math.random()*12) + 'px';
-    var hue = 340 + Math.random() * 30;
-    petal.style.background = 'linear-gradient(135deg, hsla('+hue+',80%,80%,0.7), hsla('+hue+',70%,65%,0.4))';
-    bg.appendChild(petal);
-  }
-  // 25 sparkle dots
-  for (var k = 0; k < 25; k++) {
-    var dot = document.createElement('div');
-    dot.className = 'sparkle-dot';
-    dot.style.left = (Math.random()*100).toFixed(1) + '%';
-    dot.style.top = (Math.random()*100).toFixed(1) + '%';
-    dot.style.animationDuration = (2 + Math.random()*4).toFixed(1) + 's';
-    dot.style.animationDelay = (Math.random()*6).toFixed(1) + 's';
-    bg.appendChild(dot);
-  }
+      function drawStars() {
+        sfCtx.clearRect(0, 0, sfc.width, sfc.height);
+        for (var s of stars) {
+          s.flicker += .02 + s.z * .01;
+          var a = .3 + .7 * (.5 + .5 * Math.sin(s.flicker));
+          sfCtx.globalAlpha = a * Math.min(s.z / 2, 1);
+          sfCtx.fillStyle = s.color;
+          sfCtx.beginPath();
+          sfCtx.arc(s.x, s.y, s.r * s.z * .6, 0, Math.PI * 2);
+          sfCtx.fill();
+          // Glow
+          sfCtx.globalAlpha = a * .1;
+          sfCtx.beginPath();
+          sfCtx.arc(s.x, s.y, s.r * s.z * 3, 0, Math.PI * 2);
+          sfCtx.fill();
+        }
+        sfCtx.globalAlpha = 1;
+        requestAnimationFrame(drawStars);
+      }
+      drawStars();
 
-  /* ───────── SCROLL PROGRESS BAR ───────── */
-  window.addEventListener('scroll', function() {
-    var scrollTop = window.scrollY || document.documentElement.scrollTop;
-    var docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    var pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-    document.getElementById('scrollProgress').style.width = pct + '%';
-  });
+      /* ═══════ NEBULA (colour clouds) ═══════ */
+      var neb = document.getElementById('nebula');
+      var nCtx = neb.getContext('2d');
+      var nebClouds = [];
 
-  /* ───────── TILT EFFECT ON ENVELOPE (subtle parallax) ───────── */
-  var envelope = document.getElementById('envelope');
-  document.addEventListener('mousemove', function(e) {
-    if (!envelope || window.innerWidth < 768) return;
-    var rect = envelope.getBoundingClientRect();
-    var cx = rect.left + rect.width / 2;
-    var cy = rect.top + rect.height / 2;
-    var dx = (e.clientX - cx) / rect.width;
-    var dy = (e.clientY - cy) / rect.height;
-    var rotateY = dx * 3;
-    var rotateX = -dy * 3;
-    envelope.style.transform = 'perspective(1200px) rotateX('+rotateX+'deg) rotateY('+rotateY+'deg)';
-  });
+      function initNebula() {
+        neb.width = innerWidth; neb.height = innerHeight;
+        nebClouds = [];
+        for (var i = 0; i < 6; i++) {
+          nebClouds.push({
+            x: Math.random() * neb.width, y: Math.random() * neb.height,
+            r: 150 + Math.random() * 200,
+            dx: (Math.random() - .5) * .3, dy: (Math.random() - .5) * .3,
+            color: ['rgba(209,77,114,', 'rgba(232,145,58,', 'rgba(212,168,67,', 'rgba(100,40,120,', 'rgba(242,166,192,'][Math.floor(Math.random() * 5)]
+          });
+        }
+      }
+      initNebula();
 
-})();
-</script>
+      function drawNebula() {
+        nCtx.clearRect(0, 0, neb.width, neb.height);
+        for (var c of nebClouds) {
+          c.x += c.dx; c.y += c.dy;
+          if (c.x < -c.r) c.x = neb.width + c.r; if (c.x > neb.width + c.r) c.x = -c.r;
+          if (c.y < -c.r) c.y = neb.height + c.r; if (c.y > neb.height + c.r) c.y = -c.r;
+          var g = nCtx.createRadialGradient(c.x, c.y, 0, c.x, c.y, c.r);
+          g.addColorStop(0, c.color + '.06)');
+          g.addColorStop(1, c.color + '0)');
+          nCtx.fillStyle = g;
+          nCtx.fillRect(c.x - c.r, c.y - c.r, c.r * 2, c.r * 2);
+        }
+        requestAnimationFrame(drawNebula);
+      }
+      drawNebula();
 
+      /* ═══════ LOADING → CINEMATIC ═══════ */
+      setTimeout(function () {
+        document.getElementById('loader').classList.add('done');
+        startCinematic();
+      }, 2200);
+
+      /* ═══════ CINEMATIC SEQUENCE ═══════ */
+      var cinematicDone = false;
+      function startCinematic() {
+        var lb1 = document.getElementById('lbTop');
+        var lb2 = document.getElementById('lbBot');
+        var cl1 = document.getElementById('cl1');
+        var cl2 = document.getElementById('cl2');
+        var cl3 = document.getElementById('cl3');
+        var hb = document.getElementById('hbLine');
+        var mh = document.getElementById('morphHeart');
+        var tap = document.getElementById('cinTap');
+
+        // Letterbox in
+        setTimeout(function () { lb1.classList.add('show'); lb2.classList.add('show'); }, 300);
+        // Line 1
+        setTimeout(function () { cl1.classList.add('visible'); }, 800);
+        // Line 2
+        setTimeout(function () { cl2.classList.add('visible'); }, 2200);
+        // Line 3
+        setTimeout(function () { cl3.classList.add('visible'); }, 3800);
+        // Heartbeat line
+        setTimeout(function () { hb.classList.add('visible'); }, 4800);
+        // Fade out text lines
+        setTimeout(function () {
+          cl1.classList.add('exit-up'); cl2.classList.add('exit-up'); cl3.classList.add('exit-up');
+          hb.style.opacity = '0'; hb.style.transform = 'translateY(-20px)';
+          hb.style.transition = 'all 1s ease';
+        }, 7000);
+        // Morph heart
+        setTimeout(function () { mh.classList.add('show'); }, 8200);
+        // Pulse
+        setTimeout(function () { mh.classList.remove('show'); mh.classList.add('pulse'); mh.style.fontSize = '80px'; mh.style.opacity = '1'; }, 9500);
+        // Ripples
+        setTimeout(function () { fireRipples(); }, 9800);
+        // Tap prompt
+        setTimeout(function () { tap.classList.add('show'); }, 10500);
+        // Auto transition
+        setTimeout(function () { transitionToPoem(); }, 14000);
+      }
+
+      function fireRipples() {
+        var rc = document.getElementById('ripples');
+        for (var i = 0; i < 4; i++) {
+          var r = document.createElement('div');
+          r.className = 'ripple';
+          rc.appendChild(r);
+          setTimeout(function (el) { el.classList.add('go') }, i * 400, r);
+        }
+      }
+
+      /* ═══════ SKIP & TAP ═══════ */
+      document.getElementById('skipBtn').addEventListener('click', transitionToPoem);
+      document.getElementById('cinematic').addEventListener('click', function (e) {
+        if (e.target.id === 'skipBtn') return;
+        transitionToPoem();
+      });
+
+      /* ═══════ GLITCH TRANSITION ═══════ */
+      function glitchTransition(callback) {
+        var gl = document.getElementById('glitchLayer');
+        gl.style.display = 'block';
+        gl.innerHTML = '';
+        // Create glitch bars
+        for (var i = 0; i < 20; i++) {
+          var bar = document.createElement('div');
+          bar.className = 'glitch-bar';
+          bar.style.top = (Math.random() * 100) + '%';
+          bar.style.height = (1 + Math.random() * 6) + 'px';
+          bar.style.background = ['rgba(209,77,114,0.2)', 'rgba(212,168,67,0.15)', 'rgba(255,255,255,0.1)'][Math.floor(Math.random() * 3)];
+          bar.style.transform = 'translateX(' + (Math.random() * 20 - 10) + 'px)';
+          bar.style.animation = 'glitchFlash .15s ease ' + (i * .02) + 's ' + (2 + Math.floor(Math.random() * 3)) + ' alternate';
+          gl.appendChild(bar);
+        }
+        // Add glitch keyframes dynamically
+        if (!document.getElementById('glitchStyle')) {
+          var s = document.createElement('style');
+          s.id = 'glitchStyle';
+          s.textContent = '@keyframes glitchFlash{0%{opacity:0;transform:translateX(-10px)}50%{opacity:1}100%{opacity:0;transform:translateX(10px)}}';
+          document.head.appendChild(s);
+        }
+        setTimeout(function () {
+          gl.style.display = 'none';
+          if (callback) callback();
+        }, 600);
+      }
+
+      /* ═══════ TRANSITION TO POEM ═══════ */
+      function transitionToPoem() {
+        if (cinematicDone) return;
+        cinematicDone = true;
+
+        glitchTransition(function () {
+          document.getElementById('cinematic').classList.add('exit');
+          var pp = document.getElementById('poemPage');
+          pp.classList.add('show');
+          setTimeout(function () {
+            document.getElementById('poemCard').classList.add('visible');
+          }, 300);
+          setTimeout(function () {
+            document.getElementById('poemTitle').classList.add('reveal');
+          }, 800);
+          setTimeout(function () {
+            document.getElementById('poemSub').classList.add('show');
+          }, 1800);
+          setTimeout(function () {
+            var dv = document.getElementById('divider1');
+            dv.classList.add('show');
+            var dvs = dv.querySelectorAll('.dv');
+            dvs.forEach(function (d, i) { d.style.animationDelay = (i * .15) + 's'; });
+          }, 2200);
+          // Start observers
+          setTimeout(initScrollObservers, 500);
+          startSparkleTrail();
+        });
+      }
+
+      /* ═══════ SCROLL-TRIGGERED STANZA REVEALS ═══════ */
+      function initScrollObservers() {
+        var targets = document.querySelectorAll('.stanza, .sep, .poem-footer, .reread');
+        if (!('IntersectionObserver' in window)) {
+          targets.forEach(function (t) { t.classList.add('visible') });
+          return;
+        }
+        var obs = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              obs.unobserve(entry.target);
+            }
+          });
+        }, { threshold: .2, rootMargin: '0px 0px -40px 0px' });
+        targets.forEach(function (t) { obs.observe(t); });
+      }
+
+      /* ═══════ SPARKLE TRAIL ═══════ */
+      var sc = document.getElementById('sparkleCanvas');
+      var scCtx = sc.getContext('2d');
+      var sparkles = [];
+      var sparkActive = false;
+
+      function startSparkleTrail() {
+        sparkActive = true;
+        sc.width = innerWidth; sc.height = innerHeight;
+        addEventListener('resize', function () { sc.width = innerWidth; sc.height = innerHeight; });
+        document.addEventListener('mousemove', function (e) { spawnSpark(e.clientX, e.clientY, 3) });
+        document.addEventListener('touchmove', function (e) { var t = e.touches[0]; spawnSpark(t.clientX, t.clientY, 2) }, { passive: true });
+        // Click burst
+        document.addEventListener('click', function (e) { spawnSpark(e.clientX, e.clientY, 12) });
+        animSpark();
+      }
+
+      function spawnSpark(x, y, n) {
+        var cols = ['#D4A843', '#D14D72', '#F2A6C0', '#E8913A', '#fff', '#A3284A'];
+        for (var i = 0; i < n; i++) {
+          sparkles.push({
+            x: x + (Math.random() - .5) * 8, y: y + (Math.random() - .5) * 8,
+            vx: (Math.random() - .5) * 3, vy: (Math.random() - .5) * 3 - 1.5,
+            life: 1, decay: .012 + Math.random() * .018,
+            r: 1.5 + Math.random() * 3,
+            color: cols[Math.floor(Math.random() * cols.length)],
+            type: Math.random() > .6 ? 'star' : 'circle'
+          });
+        }
+      }
+
+      function animSpark() {
+        if (!sparkActive) return;
+        scCtx.clearRect(0, 0, sc.width, sc.height);
+        for (var i = sparkles.length - 1; i >= 0; i--) {
+          var p = sparkles[i];
+          p.x += p.vx; p.y += p.vy; p.vy += .03; p.life -= p.decay;
+          if (p.life <= 0) { sparkles.splice(i, 1); continue }
+          scCtx.save();
+          scCtx.translate(p.x, p.y);
+          scCtx.globalAlpha = p.life;
+          scCtx.fillStyle = p.color;
+          scCtx.shadowColor = p.color;
+          scCtx.shadowBlur = 6;
+          if (p.type === 'star') {
+            var R = p.r * p.life;
+            scCtx.beginPath();
+            for (var s = 0; s < 10; s++) {
+              var a = (Math.PI / 5) * s, d = s % 2 === 0 ? R : R * .4;
+              s === 0 ? scCtx.moveTo(Math.cos(a) * d, Math.sin(a) * d) : scCtx.lineTo(Math.cos(a) * d, Math.sin(a) * d);
+            }
+            scCtx.closePath(); scCtx.fill();
+          } else {
+            scCtx.beginPath();
+            scCtx.arc(0, 0, p.r * p.life, 0, Math.PI * 2);
+            scCtx.fill();
+          }
+          scCtx.restore();
+        }
+        requestAnimationFrame(animSpark);
+      }
+
+      /* ═══════ AMBIENT FLOATERS ═══════ */
+      var abg = document.getElementById('ambientBg');
+      var emojis = ['💕', '❤️', '💖', '💗', '🌸', '🌺', '✨', '🪷', '🌹', '💐'];
+      for (var i = 0; i < 28; i++) {
+        var sp = document.createElement('span');
+        sp.className = 'fl-heart';
+        sp.textContent = emojis[i % emojis.length];
+        sp.style.left = (Math.random() * 100).toFixed(1) + '%';
+        sp.style.fontSize = (1 + Math.random() * 1.2).toFixed(2) + 'rem';
+        sp.style.animationDuration = (12 + Math.random() * 16).toFixed(1) + 's';
+        sp.style.animationDelay = (Math.random() * 20).toFixed(1) + 's';
+        abg.appendChild(sp);
+      }
+      for (var j = 0; j < 18; j++) {
+        var pt = document.createElement('div');
+        pt.className = 'fl-petal';
+        pt.style.left = (Math.random() * 100).toFixed(1) + '%';
+        pt.style.animationDuration = (14 + Math.random() * 14).toFixed(1) + 's';
+        pt.style.animationDelay = (Math.random() * 22).toFixed(1) + 's';
+        var h = 340 + Math.random() * 25;
+        pt.style.background = 'linear-gradient(135deg,hsla(' + h + ',75%,75%,.5),hsla(' + h + ',65%,55%,.25))';
+        pt.style.width = (12 + Math.random() * 10) + 'px';
+        pt.style.height = (16 + Math.random() * 12) + 'px';
+        abg.appendChild(pt);
+      }
+
+      /* ═══════ FIREFLIES ═══════ */
+      for (var k = 0; k < 30; k++) {
+        var ff = document.createElement('div');
+        ff.className = 'firefly';
+        ff.style.left = (Math.random() * 100) + '%';
+        ff.style.top = (Math.random() * 100) + '%';
+        ff.style.background = ['#D4A843', '#D14D72', '#F2A6C0', '#fff'][Math.floor(Math.random() * 4)];
+        ff.style.boxShadow = '0 0 6px ' + ff.style.background;
+        ff.style.setProperty('--fx', (Math.random() * 100 - 50) + 'px');
+        ff.style.setProperty('--fy', (Math.random() * 100 - 50) + 'px');
+        ff.style.setProperty('--fx2', (Math.random() * 80 - 40) + 'px');
+        ff.style.setProperty('--fy2', (Math.random() * 80 - 40) + 'px');
+        ff.style.animationDuration = (6 + Math.random() * 10) + 's';
+        ff.style.animationDelay = (Math.random() * 8) + 's';
+        document.getElementById('poemPage').appendChild(ff);
+      }
+
+      /* ═══════ SCROLL PROGRESS ═══════ */
+      addEventListener('scroll', function () {
+        var top = window.scrollY || document.documentElement.scrollTop;
+        var h = document.documentElement.scrollHeight - innerHeight;
+        document.getElementById('scrollProg').style.width = (h > 0 ? (top / h) * 100 : 0) + '%';
+      });
+
+      /* ═══════ 3D TILT ON CARD ═══════ */
+      var card = document.getElementById('poemCard');
+      document.addEventListener('mousemove', function (e) {
+        if (!card || innerWidth < 768) return;
+        var r = card.getBoundingClientRect();
+        if (e.clientY < r.top - 100 || e.clientY > r.bottom + 100) return;
+        var dx = (e.clientX - (r.left + r.width / 2)) / r.width;
+        var dy = (e.clientY - (r.top + r.height / 2)) / r.height;
+        card.style.transform = 'perspective(1200px) rotateX(' + (-dy * 2) + 'deg) rotateY(' + (dx * 2) + 'deg)';
+      });
+
+    })();
+  </script>
 </body>
+
 </html>
